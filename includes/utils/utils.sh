@@ -252,7 +252,11 @@ then
     printf "${C_CLEAR}\n\n"
     [ "${GLOBAL_IS_INTERACTIVE}" == "0" ] && return
     tput cup 0 0
-    tput cd
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        tput cd
+    else
+	tput ed
+    fi
   }
 
   function check_cleanlog
